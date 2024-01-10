@@ -15,11 +15,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('product/{slug}', function ($slug) {
-    return $slug;
+Route::get('blog', function () {
+    $posts = [
+        [
+            'id' => 1,
+            'title' => 'Learning PHP'
+        ],
+        [
+            'id' => 2,
+            'title' => 'Learning Laravel'
+        ]
+    ];
+    
+    // return view('blog', ['posts' => $posts]);
+    return view('blog', compact('posts'));
+});
+
+Route::get('blog/{slug}', function ($slug) {
+    return view('post', ['post' => $slug]);
 });
 
 Route::get('search', function (Request $request) {
