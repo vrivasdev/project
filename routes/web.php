@@ -16,28 +16,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('blog', function () {
     $posts = [
         [
             'id' => 1,
-            'title' => 'Learning PHP'
+            'title' => 'Learning PHP',
+            'slug' => 'php'
         ],
         [
             'id' => 2,
-            'title' => 'Learning Laravel'
+            'title' => 'Learning Laravel',
+            'slug' => 'laravel'
         ]
     ];
     
     // return view('blog', ['posts' => $posts]);
     return view('blog', compact('posts'));
-});
+})->name('blog');
 
 Route::get('blog/{slug}', function ($slug) {
     return view('post', ['post' => $slug]);
-});
-
-Route::get('search', function (Request $request) {
-    return $request->all();
-});
+})->name('post');
