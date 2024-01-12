@@ -18,7 +18,7 @@ class PageController extends Controller
         // $post = Post::first();
         // $post = Post::find(25);
         $posts = Post::latest()->paginate();
-
+        
         return view('blog', ['posts' => $posts]);
     }
 
